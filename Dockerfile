@@ -27,6 +27,9 @@ RUN apk add glibc-bin-2.30-r0.apk
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
 RUN tar -zxf geckodriver-v0.26.0-linux64.tar.gz -C /usr/bin
 
+# GStreamer
+RUN apk add gstreamer gstreamer-tools gst-plugins-good
+
 # Sway
 RUN setcap cap_sys_admin=eip /usr/bin/sway
 
