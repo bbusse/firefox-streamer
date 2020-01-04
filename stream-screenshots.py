@@ -7,15 +7,23 @@ import subprocess
 import os
 import sys
 
-url = os.environ.get('URL')
+log_path = '/tmp/geckodriver.log'
+img_path = '/tmp'
+default_port = 6000
 
+url = os.environ.get('URL')
+port = os.environ.get('PORT')
+
+if port:
+    port = int(port)
+    if port < 1025 or port > 65535:
+        port = default_port
+else:
+    port = default_port
 if len(url) < 12:
     print("Not a valid URL")
     sys.exit(1)
 
-port = 6000
-log_path = '/tmp/geckodriver.log'
-img_path = '/tmp'
 options = Options()
 options.headless = True
 options.log.level = "info"
