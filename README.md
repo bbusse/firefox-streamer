@@ -1,5 +1,9 @@
 # POC
 
+Uses webdriver https://www.w3.org/TR/webdriver/#take-screenshot to take screenshots of given URL
+and produces a continouus video stream
+
+
 Build container
 ```
 $ podman build -t firefox-streamer .
