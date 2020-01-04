@@ -40,7 +40,7 @@ gstreamer = subprocess.Popen([
     '!', 'video/x-raw,framerate=25/2',
     '!', 'theoraenc',
     '!', 'oggmux',
-    '!', 'tcpserversink', 'host=127.0.0.1', 'port=5000'
+    '!', 'tcpserversink', 'host=' + ip + '', 'port=' + port + ''
     ], stdin=subprocess.PIPE)
 
 while True:
