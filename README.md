@@ -19,3 +19,10 @@ Open stream with media player
 $ mpv/mplayer/vlc http://[ip]:[port]
 ```
 Default port is 6000, can be overriden by env var PORT
+
+# Issues
+https://github.com/mozilla/geckodriver/issues/1577
+https://bugzilla.mozilla.org/show_bug.cgi?id=1412061
+https://github.com/w3c/webdriver/issues/893
+https://github.com/w3c/webdriver/issues/895
+https://github.com/w3c/csswg-drafts/issues/1088
