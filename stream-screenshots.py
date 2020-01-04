@@ -48,7 +48,7 @@ while True:
     filename = img_path + '/image_' + str(n).zfill(4) + '.png'
     browser.save_screenshot(filename)
     t1 = int(round(time.time() * 1000))
-    print(ip + " [" + url + "] " + str(t1 - t0) + " ms")
+    print(ip + ":" + str(port) + " [" + url + "] " + str(t1 - t0) + " ms")
     t0 = t1
 
     with open(filename, 'rb') as f:
