@@ -1,6 +1,6 @@
 # POC
 
-Uses webdriver https://www.w3.org/TR/webdriver/#take-screenshot to take screenshots of given URL
+Uses webdriver https://www.w3.org/TR/webdriver/#take-screenshot to take screenshots of a given URL
 and produces a continuous video stream
 
 
