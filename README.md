@@ -18,7 +18,7 @@ Open stream with media player
 ```
 $ mpv/mplayer/vlc http://[ip]:[port]
 ```
-Default port is 6000, can be overriden by env var PORT
+Default port is 6000, can be overridden by env var PORT
 
 # Issues
 [firefox geckodriver issue 1577](https://github.com/mozilla/geckodriver/issues/1577)  
