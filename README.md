@@ -12,12 +12,12 @@ $ podman build -t firefox-streamer .
 
 ## Run container
 ```
-$ podman run -e URL -v /dev/shm:/dev/shm -ti firefox-streamer
+$ podman run -e STREAM_SOURCE="static-images" -e URL -v /dev/shm:/dev/shm -ti firefox-streamer
 ```
 
 ## Open stream with media player
 ```
-$ mpv/mplayer/vlc http://[ip]:[port]
+$ mpv/mplayer/cvlc http://[ip]:[port]
 ```
 Default port is 6000, can be overridden by env var PORT
 
