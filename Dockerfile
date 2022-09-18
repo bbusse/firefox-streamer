@@ -1,3 +1,4 @@
+ARG GECKODRIVER_VERSION=0.31.0
 FROM alpine:3.16.2
 MAINTAINER Björn Busse <bj.rn@baerlin.eu>
 
@@ -21,8 +22,8 @@ RUN apk add libgcc python3 py3-pip && \
     pip3 install selenium
 
 RUN apk --no-cache add ca-certificates wget
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
-RUN tar -zxf geckodriver-v0.26.0-linux64.tar.gz -C /usr/bin
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz
+RUN tar -zxf geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz -C /usr/bin
 
 # GStreamer
 RUN apk add gstreamer gstreamer-tools gst-plugins-good
