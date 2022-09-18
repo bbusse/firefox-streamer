@@ -2,6 +2,8 @@ ARG GECKODRIVER_VERSION=0.31.0
 FROM alpine:3.16.2
 MAINTAINER Björn Busse <bj.rn@baerlin.eu>
 
+ARG GECKODRIVER_VERSION
+
 ENV BUILD_PACKAGES build-base
 
 RUN \
