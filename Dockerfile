@@ -18,7 +18,7 @@ RUN apk update && apk upgrade && apk add bash $BUILD_PACKAGES
 
 # We need gcompat for glibc
 # libcap for setcap
-RUN apk add gcompat firefox libcap sway mesa wf-recorder
+RUN apk add gcompat firefox libcap sway mesa
 
 # Selenium
 RUN apk add libgcc python3 py3-pip && \
