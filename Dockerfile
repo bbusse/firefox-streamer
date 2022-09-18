@@ -22,7 +22,7 @@ RUN apk add gcompat firefox libcap sway mesa
 
 # Selenium
 RUN apk add libgcc python3 py3-pip && \
-    pip3 install selenium
+    pip3 install configargparse selenium
 
 RUN apk --no-cache add ca-certificates wget
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz
