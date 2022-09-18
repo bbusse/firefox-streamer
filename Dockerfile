@@ -1,4 +1,4 @@
-FROM alpine:3.11.2
+FROM alpine:3.16.2
 MAINTAINER Björn Busse <bj.rn@baerlin.eu>
 
 ENV BUILD_PACKAGES build-base
