@@ -34,6 +34,6 @@ RUN apk add gstreamer gstreamer-tools gst-plugins-good
 # Sway
 RUN setcap cap_sys_admin=eip /usr/bin/sway
 
-COPY ./stream-screenshots.py /usr/local/bin/
+COPY ./stream.py /usr/local/bin/
 
-ENTRYPOINT "/usr/local/bin/stream-screenshots.py"
+ENTRYPOINT "/usr/local/bin/stream.py"
