@@ -28,12 +28,19 @@ RUN apk --no-cache add ca-certificates wget
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz
 RUN tar -zxf geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz -C /usr/bin
 
+# Add latest webdriver-util script for firefox automation and stream-controller for streaming
+RUN wget -P /usr/local/bin https://raw.githubusercontent.com/bbusse/webdriver-util/main/webdriver_util.py \
+&& chmod +x /usr/local/bin/webdriver_util.py \
+&& wget -P /usr/local/bin https://raw.githubusercontent.com/bbusse/stream-controller/main/controller.py \
+&& chmod +x /usr/local/bin/controller.py
+
 # GStreamer
 RUN apk add gstreamer gstreamer-tools gst-plugins-good
 
 # Sway
 RUN setcap cap_sys_admin=eip /usr/bin/sway
 
-COPY ./stream.py /usr/local/bin/
+COPY requirements.txt /
+RUN pip3 install --user -r requirements.txt
 
-ENTRYPOINT "/usr/local/bin/stream.py"
+ENTRYPOINT "/usr/local/bin/controller.py"
