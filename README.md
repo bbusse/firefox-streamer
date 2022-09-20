@@ -22,7 +22,7 @@ $ ./run.sh
 ## Open network stream with media player
 Use your media player of choice to play back the network video stream
 ```
-# mpv/mplayer/cvlc tcp://ip:port
+# mpv/mplayer/(c)vlc tcp://ip:port
 $ mpv tcp://localhost:6000
 ```
 Default port is 6000, can be overridden by env var PORT
