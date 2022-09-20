@@ -8,7 +8,7 @@ ARG GECKODRIVER_VERSION
 
 ENV ARCH="x86_64" \
     USER="firefox-user" \
-    APK_ADD="gcompat libgcc python3 py3-pip gstreamer gstreamer-tools gst-plugins-good python3 firefox py3-pip wf-recorder" \
+    APK_ADD="firefox gcompat libgcc gstreamer gstreamer-tools gst-plugins-good python3 py3-pip wf-recorder" \
     APK_DEL=""
 
 USER root
@@ -64,17 +64,19 @@ RUN addgroup -S $USER && adduser -S $USER -G $USER -G abuild \
     # Add latest webdriver-util script for firefox automation
     && wget -P /usr/local/bin https://raw.githubusercontent.com/bbusse/webdriver-util/main/webdriver_util.py \
     && chmod +x /usr/local/bin/webdriver_util.py \
+    && wget -O /tmp/requirements_webdriver.txt https://raw.githubusercontent.com/bbusse/webdriver-util/main/requirements.txt \
 
     # Add stream-controller for stream handling
     && wget -P /usr/local/bin https://raw.githubusercontent.com/bbusse/stream-controller/main/controller.py \
     && chmod +x /usr/local/bin/controller.py \
+    && wget -O /tmp/requirements_controller.txt https://raw.githubusercontent.com/bbusse/stream-controller/main/requirements.txt \
 
     # Add controller.py to startup
     && echo "exec controller.py --debug=$DEBUG" >> /etc/sway/config.d/controller
 
 # Add entrypoint
 USER $USER
-COPY requirements.txt /
-RUN pip3 install --user -r requirements.txt
+RUN pip3 install --user -r /tmp/requirements_controller.txt
+RUN pip3 install --user -r /tmp/requirements_webdriver.txt
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
