@@ -14,10 +14,14 @@ $ podman build -t firefox-streamer .
 ```
 $ podman run -e STREAM_SOURCE="static-images" -e URL -v /dev/shm:/dev/shm -ti firefox-streamer
 ```
-
-## Open stream with media player
+or
 ```
-$ mpv/mplayer/cvlc http://[ip]:[port]
+$ ./run.sh
+```
+
+## Open network stream with media player
+```
+$ mpv/mplayer/cvlc tcp://[ip]:[port]
 ```
 Default port is 6000, can be overridden by env var PORT
 
