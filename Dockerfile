@@ -1,6 +1,6 @@
-ARG SWAYVNC_VERSION=latest
+ARG SWAYVNC_FIREFOX_VERSION=latest
 ARG GECKODRIVER_VERSION=0.31.0
-FROM ghcr.io/bbusse/swayvnc:${SWAYVNC_VERSION}
+FROM ghcr.io/bbusse/swayvnc-firefox:${SWAYVNC_FIREFOX_VERSION}
 LABEL maintainer="Björn Busse <bj.rn@baerlin.eu>"
 LABEL org.opencontainers.image.source https://github.com/bbusse/firefox-streamer
 
@@ -8,22 +8,15 @@ ARG GECKODRIVER_VERSION
 
 ENV ARCH="x86_64" \
     USER="firefox-user" \
-    APK_ADD="firefox gcompat libgcc gstreamer gstreamer-tools gst-plugins-good python3 py3-pip wf-recorder" \
+    APK_ADD="gcompat libgcc gstreamer gstreamer-tools gst-plugins-good python3 py3-pip" \
     APK_DEL=""
 
 USER root
 
-RUN \
-# Use edge repos - needed for firefox
-echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories && \
-echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
-echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-
-# Add application user and application
 # Cleanup: Remove files and users
-RUN addgroup -S $USER && adduser -S $USER -G $USER -G abuild \
+RUN \
     # https://gitlab.alpinelinux.org/alpine/aports/-/issues/11768
-    && sed -i -e 's/https/http/' /etc/apk/repositories \
+    sed -i -e 's/https/http/' /etc/apk/repositories \
     && apk add --no-cache ${APK_ADD} \
     && apk del --no-cache ${APK_DEL} \
     && rm -rf \
