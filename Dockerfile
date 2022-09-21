@@ -48,7 +48,7 @@ RUN \
     && deluser --remove-home smmsp \
     && deluser --remove-home guest \
 
-    # Get geckodriver
+    # Add geckodriver
     && wget https://github.com/mozilla/geckodriver/releases/download/v${GECKODRIVER_VERSION}/geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz \
     && tar -xzf geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz -C /usr/bin \
     && rm geckodriver-v${GECKODRIVER_VERSION}-linux64.tar.gz \
